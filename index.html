@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Y sin embargo... Homenaje a Sabina · Espectáculo musical</title>
+  <meta name="description" content="Un espectáculo musical con alma de teatro que rinde homenaje a las canciones inmortales de Joaquín Sabina. Música en directo, poesía y emoción en cada función." />
+  <meta name="keywords" content="Joaquín Sabina, homenaje Sabina, musical Sabina, espectáculo Sabina, y sin embargo... sabina, teatro musical, canciones Sabina, Nos Sobran los Motivos, Y sin embargo, homenaje cantautor, espectáculo musical poético" />
+  <meta property="og:title" content="Y sin embargo... Homenaje a Sabina · Espectáculo musical" />
+  <meta property="og:description" content="Un espectáculo musical con alma de teatro que rinde homenaje a las canciones inmortales de Joaquín Sabina. Música en directo, poesía y emoción en cada función." />
+  <meta property="og:image" content="https://ysinembargoespectaculo.com/assets/img/banner-rrss.jpg" />
+  <meta property="og:url" content="https://ysinembargoespectaculo.com" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Y sin embargo... Homenaje a Sabina · Espectáculo musical" />
+  <meta name="twitter:description" content="Un espectáculo musical con alma de teatro que rinde homenaje a las canciones inmortales de Joaquín Sabina." />
+  <meta name="twitter:image" content="https://ysinembargoespectaculo.com/assets/img/banner-rrss.jpg" />
+  <link rel="canonical" href="https://ysinembargoespectaculo.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,900;1,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #5298E8;
+      --accent-glow: rgba(82, 152, 232, 0.35);
+      --dark: #080c12;
+      --dark2: rgba(13, 20, 32, 0.75);
+      --dark3: #111927;
+      --text: #e8edf5;
+      --text-muted: #8a9ab5;
+      --white: #ffffff;
+      --nav-h: 64px;
+      --section-bg: rgba(8, 12, 18, 0.72);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      background: rgba(8, 12, 18, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(82, 152, 232, 0.12);
+      transition: background 0.3s;
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Hamburger */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .nav-mobile {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: rgba(8,12,18,0.97);
+      backdrop-filter: blur(16px);
+      z-index: 999;
+      padding: 2rem;
+      gap: 1.5rem;
+      border-bottom: 1px solid rgba(82,152,232,0.15);
+      transform: translateY(-10px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+    }
+    .nav-mobile.open {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .nav-mobile a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(82,152,232,0.1);
+      transition: color 0.2s;
+    }
+    .nav-mobile a:hover { color: var(--accent); }
+
+    /* ── HERO / CARRUSEL ── */
+    #inicio {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      background: transparent;
+    }
+
+    .carousel {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center center;
+      opacity: 0;
+      transition: opacity 1.4s ease-in-out;
+    }
+    .carousel-slide.active { opacity: 1; }
+
+    .slide-1 { background-image: url('assets/img/portada-web.jpg'); background-position: center center; background-size: cover; }
+    .slide-2 { background-image: url('assets/img/portada-web.jpg'); background-position: center center; background-size: cover; }
+    .slide-3 { background-image: url('assets/img/portada-web.jpg'); background-position: center center; background-size: cover; }
+    .slide-4 { background-image: url('assets/img/portada-web.jpg'); background-position: center center; background-size: cover; }
+
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(8,12,18,0.35) 0%,
+        rgba(8,12,18,0.2) 40%,
+        rgba(8,12,18,0.75) 100%
+      );
+      z-index: 1;
+    }
+
+    /* Ken Burns effect */
+    .carousel-slide.active {
+      animation: kenburns 8s ease-out forwards;
+    }
+    @keyframes kenburns {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 0 2.5rem 4rem;
+      max-width: 780px;
+    }
+
+    .hero-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.9s 0.5s forwards;
+    }
+    .hero-title span { color: var(--accent); }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      font-weight: 300;
+      color: rgba(232, 237, 245, 0.85);
+      letter-spacing: 0.04em;
+      margin-bottom: 2rem;
+      max-width: 480px;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s 0.7s forwards;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      background: var(--accent);
+      color: var(--dark);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.3s;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.9s forwards;
+    }
+    .hero-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.15);
+      transform: translateX(-100%) skewX(-15deg);
+      transition: transform 0.4s;
+    }
+    .hero-cta:hover::before { transform: translateX(100%) skewX(-15deg); }
+    .hero-cta:hover {
+      box-shadow: 0 0 30px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    /* Carousel dots */
+    .carousel-dots {
+      position: fixed;
+      bottom: 2rem;
+      right: 2.5rem;
+      z-index: 3;
+      display: flex;
+      gap: 8px;
+      transition: opacity 0.4s;
+    }
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transition: background 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+    .dot.active {
+      background: var(--accent);
+      transform: scale(1.4);
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section {
+      padding: 6rem 2.5rem;
+    }
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .section-divider {
+      width: 48px; height: 2px;
+      background: var(--accent);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── SOBRE NOSOTROS ── */
+    #sobre {
+      background: var(--dark2);
+      position: relative;
+      overflow: hidden;
+    }
+    #sobre::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(82,152,232,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .sobre-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .sobre-text p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(232,237,245,0.85);
+      margin-bottom: 1.5rem;
+    }
+    .sobre-text p strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+    .dossier-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid rgba(82,152,232,0.3);
+      padding: 0.6rem 1.2rem;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .dossier-link:hover {
+      background: rgba(82,152,232,0.1);
+      border-color: var(--accent);
+    }
+
+    .sobre-img-wrap {
+      position: relative;
+    }
+    .sobre-img-wrap::before {
+      content: '';
+      position: absolute;
+      top: 16px; left: 16px;
+      right: -16px; bottom: -16px;
+      border: 1px solid rgba(82,152,232,0.25);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .sobre-img-wrap img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      position: relative;
+      z-index: 1;
+      filter: grayscale(20%);
+      transition: filter 0.4s;
+    }
+    .sobre-img-wrap:hover img { filter: grayscale(0%); }
+
+    /* ── VÍDEOS ── */
+    #videos {
+      background: var(--dark2);
+    }
+    .videos-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .video-item {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      background: var(--dark2);
+      border: 1px solid rgba(82,152,232,0.1);
+    }
+    .video-item iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    /* ── CARTELES ── */
+    #carteles {
+      background: var(--dark2);
+      padding: 6rem 2.5rem;
+      position: relative;
+    }
+    .carteles-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .carteles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .cartel-card {
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+    .cartel-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .cartel-card:hover img {
+      transform: scale(1.05);
+    }
+    .cartel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,12,18,0.95) 0%, rgba(8,12,18,0.3) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      transition: background 0.3s;
+    }
+    .cartel-card:hover .cartel-overlay {
+      background: linear-gradient(to top, rgba(8,12,18,0.98) 0%, rgba(8,12,18,0.6) 60%, rgba(8,12,18,0.2) 100%);
+    }
+    .cartel-nombre {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    .cartel-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(232,237,245,0.85);
+      line-height: 1.5;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+    }
+    .cartel-card:hover .cartel-desc {
+      max-height: 120px;
+      opacity: 1;
+    }
+    @media (max-width: 768px) {
+      .carteles-grid { grid-template-columns: 1fr; }
+      .cartel-desc {
+        max-height: 120px;
+        opacity: 1;
+      }
+      .cartel-overlay {
+        justify-content: space-between;
+      }
+    }
+
+    /* ── AGENDA ── */
+    #agenda {
+      background: var(--section-bg);
+    }
+    .agenda-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .agenda-frame-wrap {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(82,152,232,0.15);
+      background: var(--dark3);
+    }
+    .agenda-frame-wrap iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      display: block;
+      filter: invert(90%) hue-rotate(180deg);
+      opacity: 0.9;
+    }
+
+    /* ── CONTACTO ── */
+    #contacto {
+      background: var(--dark2);
+      position: relative;
+      overflow: hidden;
+    }
+    #contacto::after {
+      content: '';
+      position: absolute;
+      bottom: -300px; left: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(82,152,232,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contacto-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contacto-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1.1rem 1.5rem;
+      text-decoration: none;
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: all 0.25s;
+      border: 1px solid rgba(82,152,232,0.25);
+    }
+    .cta-btn--phone {
+      background: var(--accent);
+      color: var(--dark);
+      border-color: var(--accent);
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+    .cta-btn--phone:hover {
+      box-shadow: 0 0 30px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+    .cta-btn--email {
+      color: var(--text);
+      background: rgba(82,152,232,0.06);
+      font-size: 0.9rem;
+    }
+    .cta-btn--email:hover {
+      background: rgba(82,152,232,0.12);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .contacto-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .contacto-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .contacto-item-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .contacto-item-value {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--white);
+    }
+    .contacto-item-value a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contacto-item-value a:hover { color: var(--accent); }
+
+    /* Social icons */
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .social-link {
+      width: 42px; height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(82,152,232,0.25);
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: border-color 0.25s, color 0.25s, background 0.25s;
+    }
+    .social-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(82,152,232,0.08);
+    }
+    .social-link svg {
+      width: 18px; height: 18px;
+      fill: currentColor;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--section-bg);
+      border-top: 1px solid rgba(82,152,232,0.1);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-brand {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .footer-brand span { color: var(--accent); }
+    .footer-copy {
+      font-size: 0.7rem;
+      color: rgba(138,154,181,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      :root { --nav-h: 60px; }
+
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+
+      section { padding: 4rem 1.25rem; }
+
+      .hero-content { padding: 0 1.25rem 3.5rem; }
+      .hero-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+
+      .sobre-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .sobre-img-wrap { order: -1; max-width: 320px; margin: 0 auto; }
+
+      .videos-grid { grid-template-columns: 1fr; }
+
+      .agenda-frame-wrap iframe { height: 380px; }
+
+      .contacto-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .cta-btn { font-size: 0.95rem; }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="navbar">
+    <a href="#inicio" class="nav-logo">Y sin embargo… <span>Sabina</span></a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre nosotros</a></li>
+      <li><a href="#videos">Vídeos</a></li>
+      <li><a href="#carteles">Actuaciones</a></li>
+      <li><a href="#agenda">Agenda</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="nav-burger" id="burger" aria-label="Menú" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="#sobre" class="mobile-link">Sobre nosotros</a>
+    <a href="#videos" class="mobile-link">Vídeos</a>
+    <a href="#carteles" class="mobile-link">Actuaciones</a>
+    <a href="#agenda" class="mobile-link">Agenda</a>
+    <a href="#contacto" class="mobile-link">Contacto</a>
+  </div>
+
+  <!-- ── HERO ── -->
+  <main>
+  <section id="inicio">
+    <div class="carousel">
+      <div class="carousel-slide slide-1 active"></div>
+      <div class="carousel-slide slide-2"></div>
+      <div class="carousel-slide slide-3"></div>
+      <div class="carousel-slide slide-4"></div>
+      <div class="carousel-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-tag">Espectáculo musical · Cádiz · Andalucía</p>
+      <h1 class="hero-title">Y sin embargo…<br><span>Sabina</span></h1>
+      <p class="hero-sub">Un recorrido por las canciones de Joaquín Sabina desde una puesta en escena completamente diferente.</p>
+      <a href="#contacto" class="hero-cta">Contáctanos</a>
+    </div>
+    <div class="carousel-dots" id="carouselDots">
+      <div class="dot active" data-index="0"></div>
+      <div class="dot" data-index="1"></div>
+      <div class="dot" data-index="2"></div>
+      <div class="dot" data-index="3"></div>
+    </div>
+  </section>
+
+  <!-- ── SOBRE NOSOTROS ── -->
+  <section id="sobre">
+    <div class="sobre-inner">
+      <div class="sobre-text">
+        <p class="section-label reveal">Sobre nosotros</p>
+        <h2 class="section-title reveal reveal-delay-1">Decidimos hacer<br>algo diferente</h2>
+        <div class="section-divider reveal reveal-delay-2"></div>
+        <p class="reveal reveal-delay-2">
+          Bien nos podrían llamar Tributo, pero nosotros preferimos definir nuestro show como un <strong>"Homenaje a Joaquín Sabina"</strong>, por lo que encierra el espectáculo en sí.
+        </p>
+        <p class="reveal reveal-delay-3">
+          Donde sí, hay canciones suyas, como es de esperar. Pero no hay ni parecidos razonables ni mucho menos imitaciones. Sólo <strong>versiones, poemas e historias</strong> contadas y cantadas desde nuestro propio encuentro con el artista, a través de nuestra música y de sus canciones.
+        </p>
+        <a href="DOSSIER Y SIN EMBARGO...2026.pdf" target="_blank" rel="noopener" class="dossier-link reveal reveal-delay-4">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          Nuestro dossier
+        </a>
+      </div>
+      <div class="sobre-img-wrap reveal reveal-delay-2">
+        <img src="assets/img/img-sobre-nos.jpg" alt="Y sin embargo... Homenaje a Sabina en escena" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VÍDEOS ── -->
+  <section id="videos">
+    <div class="videos-inner">
+      <p class="section-label reveal">Míranos en acción</p>
+      <h2 class="section-title reveal reveal-delay-1">Vídeos</h2>
+      <div class="section-divider reveal reveal-delay-2"></div>
+      <div class="videos-grid">
+        <div class="video-item reveal reveal-delay-1">
+          <iframe src="https://www.youtube.com/embed/FuU8rYIOGt8" title="Y sin embargo... Homenaje a Sabina" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-item reveal reveal-delay-2">
+          <iframe src="https://www.youtube.com/embed/FuU8rYIOGt8" title="Y sin embargo... Homenaje a Sabina" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-item reveal reveal-delay-3">
+          <iframe src="https://www.youtube.com/embed/FuU8rYIOGt8" title="Y sin embargo... Homenaje a Sabina" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-item reveal reveal-delay-4">
+          <iframe src="https://www.youtube.com/embed/FuU8rYIOGt8" title="Y sin embargo... Homenaje a Sabina" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CARTELES / ACTUACIONES ── -->
+  <section id="carteles">
+    <div class="carteles-inner">
+      <p class="section-label reveal">Fechas</p>
+      <h2 class="section-title reveal reveal-delay-1">Actuaciones</h2>
+      <div class="section-divider reveal reveal-delay-2"></div>
+      <div class="carteles-grid">
+        <div class="cartel-card reveal reveal-delay-1">
+          <img src="assets/cartel/CARTEL-CHANCA-17-JUL-2026-WEB.jpg" alt="La Chanca Conil - 17 Julio 2026" loading="lazy" />
+          <div class="cartel-overlay">
+            <p class="cartel-nombre">La Chanca · Conil</p>
+            <p class="cartel-desc">17 de Julio de 2026 · 22:00 h · Recinto cultural "La Chanca", Conil de la Frontera, Cádiz.</p>
+          </div>
+        </div>
+        <div class="cartel-card reveal reveal-delay-2">
+          <img src="assets/cartel/cartel-zahora-8-ago.jpg" alt="Anfi Teatro Zahora - 8 Agosto 2026" loading="lazy" />
+          <div class="cartel-overlay">
+            <p class="cartel-nombre">Anfi Teatro · Zahora</p>
+            <p class="cartel-desc">8 de Agosto de 2026 · 22:00 h · Anfi Teatro Zahora, Barbate, Cádiz.</p>
+          </div>
+        </div>
+        <div class="cartel-card reveal reveal-delay-3">
+          <img src="assets/cartel/CARTEL-GENERICO-PROX-web.jpg" alt="Próximamente" loading="lazy" />
+          <div class="cartel-overlay">
+            <p class="cartel-nombre">Próximamente</p>
+            <p class="cartel-desc">Nueva fecha por confirmar. Contáctanos para más información.</p>
+          </div>
+        </div>
+        <div class="cartel-card reveal reveal-delay-4">
+          <img src="assets/cartel/CARTEL-GENERICO-PROX-web.jpg" alt="Próximamente" loading="lazy" />
+          <div class="cartel-overlay">
+            <p class="cartel-nombre">Próximamente</p>
+            <p class="cartel-desc">Nueva fecha por confirmar. Contáctanos para más información.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AGENDA ── -->
+  <section id="agenda">
+    <div class="agenda-inner">
+      <p class="section-label reveal">Próximas fechas</p>
+      <h2 class="section-title reveal reveal-delay-1">Agenda</h2>
+      <div class="section-divider reveal reveal-delay-2"></div>
+      <div class="agenda-frame-wrap reveal reveal-delay-2">
+        <!-- PENDIENTE: sustituir src por el embed URL del Google Calendar del espectáculo -->
+        <iframe src="https://calendar.google.com/calendar/embed?src=ysinembargoespectaculo%40gmail.com&ctz=Europe%2FMadrid&bgcolor=%230d1420&color=%235298E8&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&wkst=2" title="Agenda Y sin embargo... Sabina" scrolling="no"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACTO ── -->
+  <section id="contacto">
+    <div class="contacto-inner">
+      <div class="contacto-info">
+        <div>
+          <p class="section-label reveal">Reservas y contratación</p>
+          <h2 class="section-title reveal reveal-delay-1">Hablemos</h2>
+          <div class="section-divider reveal reveal-delay-2"></div>
+        </div>
+        <div class="contacto-item reveal reveal-delay-2">
+          <span class="contacto-item-label">WhatsApp</span>
+          <span class="contacto-item-value"><a href="https://wa.me/34654161005">654 161 005</a></span>
+        </div>
+        <div class="contacto-item reveal reveal-delay-3">
+          <span class="contacto-item-label">Email</span>
+          <span class="contacto-item-value"><a href="mailto:info@ysinembargoespectaculo.com">info@ysinembargoespectaculo.com</a></span>
+        </div>
+        <div class="reveal reveal-delay-4">
+          <p class="contacto-item-label" style="margin-bottom:0.75rem">Síguenos</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/ysinembargosabina" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61566875714517" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@Ysinembargo...Sabina" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contacto-cta reveal reveal-delay-2">
+        <a href="https://wa.me/34654161005" target="_blank" rel="noopener" class="cta-btn cta-btn--phone">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 5.44 5.44l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+          654 161 005
+        </a>
+        <a href="mailto:info@ysinembargoespectaculo.com" class="cta-btn cta-btn--email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          info@ysinembargoespectaculo.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span class="footer-brand">Y sin embargo… <span>Sabina</span></span>
+    <span class="footer-copy">© 2025 ysinembargoespectaculo.com · Todos los derechos reservados</span>
+  </footer>
+
+  <!-- ── JS ── -->
+  <script>
+    // ── Carousel ──
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    let current = 0;
+    let timer;
+
+    function goTo(idx) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = idx % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function next() { goTo(current + 1); }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(next, 6000);
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        goTo(parseInt(dot.dataset.index));
+        startTimer();
+      });
+    });
+
+    startTimer();
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) clearInterval(timer);
+      else startTimer();
+    });
+
+    // ── Mobile menu ──
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    burger.addEventListener('click', () => {
+      const isOpen = burger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', isOpen);
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && burger.classList.contains('open')) {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.focus();
+      }
+    });
+
+    // ── Ocultar dots al salir del hero ──
+    const carouselDots = document.getElementById('carouselDots');
+    const heroSection = document.getElementById('inicio');
+    const heroObserver = new IntersectionObserver((entries) => {
+      carouselDots.style.opacity = entries[0].isIntersecting ? '1' : '0';
+      carouselDots.style.pointerEvents = entries[0].isIntersecting ? 'auto' : 'none';
+    }, { threshold: 0.1 });
+    heroObserver.observe(heroSection);
+
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
