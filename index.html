@@ -272,7 +272,7 @@
     }
     .hero-title-homenaje {
       font-family: 'AoutoryDragon', sans-serif;
-      font-size: clamp(2.15rem, 6vw, 4.2rem);
+      font-size: clamp(2.37rem, 6.6vw, 4.62rem);
       font-weight: normal;
       color: #ffb849;
       line-height: 1.1;
@@ -286,7 +286,7 @@
     }
     .hero-title-ysin {
       font-family: 'AoutoryDragon', sans-serif;
-      font-size: clamp(3.6rem, 12vw, 8.4rem);
+      font-size: clamp(3.96rem, 13.2vw, 9.24rem);
       font-weight: normal;
       color: #da0000;
       line-height: 0.95;
@@ -309,8 +309,8 @@
     .hero-cta {
       display: inline-block;
       padding: 0.85rem 2.2rem;
-      background: var(--accent);
-      color: var(--dark);
+      background: #ffb849;
+      color: #0a0806;
       font-family: var(--font-botones);
       font-size: 0.8rem;
       font-weight: 800;
@@ -366,7 +366,7 @@
       padding: 6rem 2.5rem;
     }
     .section-label {
-      font-size: 0.78rem;
+      font-size: 0.86rem;
       font-weight: 700;
       letter-spacing: 0.4em;
       text-transform: uppercase;
@@ -697,25 +697,26 @@
       border: 1px solid rgba(218,0,0,0.25);
     }
     .cta-btn--phone {
-      background: var(--accent);
-      color: var(--dark);
-      border-color: var(--accent);
+      background: #ffb849;
+      color: #0a0806;
+      border-color: #ffb849;
       font-size: 1.15rem;
       font-weight: 800;
     }
     .cta-btn--phone:hover {
-      box-shadow: 0 0 30px var(--accent-glow);
+      box-shadow: 0 0 30px rgba(255,184,73,0.4);
       transform: translateY(-2px);
     }
     .cta-btn--email {
-      color: var(--text);
-      background: rgba(218,0,0,0.06);
+      background: #ffb849;
+      color: #0a0806;
+      border-color: #ffb849;
       font-size: 0.9rem;
+      font-weight: 800;
     }
     .cta-btn--email:hover {
-      background: rgba(218,0,0,0.12);
-      border-color: var(--accent);
-      color: var(--accent);
+      box-shadow: 0 0 30px rgba(255,184,73,0.4);
+      transform: translateY(-2px);
     }
 
     .contacto-info {
@@ -830,7 +831,8 @@
         grid-template-columns: 1fr;
         gap: 2rem;
       }
-      .cta-btn { font-size: 0.95rem; }
+      .cta-btn { font-size: 0.78rem; padding: 0.85rem 1rem; }
+      .cta-btn--phone { font-size: 0.78rem; }
 
       footer {
         flex-direction: column;
