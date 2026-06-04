@@ -20,6 +20,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,900;1,300&display=swap" rel="stylesheet" />
   <style>
+    @font-face {
+      font-family: 'AoutoryDragon';
+      src: url('assets/fonts/AOUTOORY DRAGON.TTF') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Euphorig';
+      src: url('assets/fonts/EUPHORIG.TTF') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Calcutta';
+      src: url('assets/fonts/CALCUTTA-BOLD.OTF') format('opentype');
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap;
+    }
     /* ── RESET & BASE ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -34,9 +55,9 @@
       --white: #ffb849;
       --nav-h: 64px;
       --section-bg: rgba(8, 12, 18, 0.72);
-      --font-titulos: 'Raleway', sans-serif;
-      --font-textos: 'Raleway', sans-serif;
-      --font-botones: 'Raleway', sans-serif;
+      --font-titulos: 'AoutoryDragon', sans-serif;
+      --font-textos: 'Calcutta', sans-serif;
+      --font-botones: 'Calcutta', sans-serif;
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -240,19 +261,37 @@
     }
 
     .hero-title {
-      font-size: clamp(3rem, 10vw, 6rem);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1em;
       margin-bottom: 1.2rem;
       opacity: 0;
       transform: translateY(30px);
       animation: fadeUp 0.9s 0.5s forwards;
       font-family: var(--font-titulos);
     }
-    .hero-title span { color: var(--accent); }
+    .hero-title-homenaje {
+      font-family: 'AoutoryDragon', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3.5rem);
+      font-weight: normal;
+      color: #ffb849;
+      line-height: 1.1;
+      display: block;
+    }
+    .hero-title-sabina {
+      font-family: 'Euphorig', sans-serif;
+      font-style: normal;
+      font-size: 1.35em;
+      color: #ffb849;
+    }
+    .hero-title-ysin {
+      font-family: 'AoutoryDragon', sans-serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: normal;
+      color: #da0000;
+      line-height: 0.95;
+      display: block;
+    }
 
     .hero-sub {
       font-size: clamp(0.95rem, 2.5vw, 1.15rem);
@@ -839,7 +878,10 @@
     </div>
     <div class="hero-content">
       <p class="hero-tag">Espectáculo Teatro Musical</p>
-      <h1 class="hero-title">Y sin embargo...<br><span>Homenaje a Sabina</span></h1>
+      <h1 class="hero-title">
+        <span class="hero-title-homenaje">Homenaje a <em class="hero-title-sabina">Sabina</em></span>
+        <span class="hero-title-ysin">Y sin embargo...</span>
+      </h1>
       <p class="hero-sub">Un viaje íntimo por la Vida, la Poesía y las Canciones de Joaquín Sabina, dónde Música y Teatro se entrelazan sin imitaciones.</p>
       <a href="https://wa.me/34699698457" target="_blank" rel="noopener" class="cta-btn cta-btn--phone" style="opacity:0; animation: fadeUp 0.9s 0.9s forwards; display:inline-flex; width:auto;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 5.44 5.44l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
@@ -1000,7 +1042,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 5.44 5.44l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
           699 698 457
         </a>
-        <a href="mailto:info@ysinembargoespectaculo.com" class="cta-btn cta-btn--email">
+        <a href="mailto:info@ysinembargoespectaculo.com" class="cta-btn cta-btn--phone">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           info@ysinembargoespectaculo.com
         </a>
