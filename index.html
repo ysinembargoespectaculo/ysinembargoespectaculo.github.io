@@ -574,7 +574,7 @@
     }
     .actuacion-item {
       display: grid;
-      grid-template-columns: 130px 1fr 80px;
+      grid-template-columns: 170px 1fr 80px;
       align-items: center;
       gap: 1.5rem;
       padding: 1.2rem 0;
@@ -583,7 +583,7 @@
     }
     .actuacion-item:first-child { border-top: 1px solid rgba(218,0,0,0.3); }
     .actuacion-fecha {
-      font-size: 0.85rem;
+      font-size: 1.1rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -633,6 +633,38 @@
       text-decoration: none;
     }
     .actuacion-link:hover { filter: brightness(1.1); }
+    .actuacion-botones { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+    .actuacion-botones .actuacion-link { margin-top: 0; }
+    .actuacion-cartel-btn {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      font-family: var(--font-botones);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      color: #ffb849;
+      background: transparent;
+      border: 1px solid #ffb849;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .actuacion-cartel-btn:hover, .actuacion-cartel-btn[aria-expanded="true"] { background: #ffb849; color: #111; }
+    .actuacion-cartel {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s ease;
+      border-bottom: 1px solid rgba(218,0,0,0.3);
+      border-bottom-width: 0;
+    }
+    .actuacion-cartel.abierto { border-bottom-width: 1px; }
+    .actuacion-cartel a { display: block; width: fit-content; margin: 1.2rem auto 1.5rem; }
+    .actuacion-cartel img {
+      display: block;
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+    }
     .bolos-mensaje {
       padding: 1.2rem 0;
       color: rgba(255,255,255,0.85);
@@ -1239,7 +1271,8 @@
   </script>
   <script>
   /* ── BOLOS DESDE GOOGLE SHEETS ──
-     Hoja con cabecera: Fecha | Hora | Lugar | Localidad | Notas | Enlace | Teléfono | Publicar
+     Hoja con cabecera (en cualquier orden): Fecha | Hora | Lugar | Localidad | Cartel | Notas | Enlace | Teléfono | Publicar
+     Cartel = nombre del archivo dentro de assets/carteles (p. ej. 20261120_PayPay.jpeg)
      En Google Sheets: Archivo > Compartir > Publicar en la web > (pestaña de bolos) > CSV > Publicar
      y pega aquí el enlace que te da. */
   const BOLOS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRVprKQR-zJj25Yd8wVg5yiUwLYxzHjYpw3egpI74FU79BUV8lXkdeiF6K0yVsKvEOJ3Drlb61b7VO1/pub?gid=0&single=true&output=csv';
@@ -1299,11 +1332,48 @@
         if (b.notas) extra.push(esc(b.notas));
         if (b.telefono) extra.push('<a href="tel:' + b.telefono.replace(/[^\d+]/g, '') + '">' + esc(b.telefono) + '</a>');
         if (extra.length) lugar += '<span class="actuacion-notas">' + extra.join(' · ') + '</span>';
-        const url = urlSegura(b.enlace);
-        if (url) lugar += '<a class="actuacion-link" href="' + esc(url) + '" target="_blank" rel="noopener">Entradas / info</a>';
       }
-      return '<div class="actuacion-item"><span class="actuacion-fecha">' + fecha + '</span><span class="actuacion-lugar">' + lugar + '</span><span class="actuacion-hora">' + esc(hora) + '</span></div>';
+      const botones = [];
+      const url = pasado ? '' : urlSegura(b.enlace);
+      if (url) botones.push('<a class="actuacion-link" href="' + esc(url) + '" target="_blank" rel="noopener">Entradas / info</a>');
+      const cartel = rutaCartel(b.cartel);
+      if (cartel) botones.push('<button type="button" class="actuacion-cartel-btn" aria-expanded="false">Ver cartel</button>');
+      if (botones.length) lugar += '<span class="actuacion-botones">' + botones.join('') + '</span>';
+      let html = '<div class="actuacion-item"><span class="actuacion-fecha">' + fecha + '</span><span class="actuacion-lugar">' + lugar + '</span><span class="actuacion-hora">' + esc(hora) + '</span></div>';
+      if (cartel) html += '<div class="actuacion-cartel"><a href="' + cartel + '" target="_blank" rel="noopener"><img data-src="' + cartel + '" alt="Cartel ' + esc(b.lugar) + ' ' + fecha + '"></a></div>';
+      return html;
     }
+
+    /* Columna "Cartel": nombre de archivo dentro de assets/carteles (o una URL https) */
+    function rutaCartel(n) {
+      n = (n || '').trim();
+      if (!n) return '';
+      if (/^https?:\/\//i.test(n)) return esc(n);
+      if (!/^[\w.\- ]+$/.test(n)) return '';
+      return 'assets/carteles/' + encodeURIComponent(n);
+    }
+
+    /* Abrir / cerrar el cartel bajo su línea */
+    document.getElementById('carteles').addEventListener('click', e => {
+      const btn = e.target.closest('.actuacion-cartel-btn');
+      if (!btn) return;
+      const panel = btn.closest('.actuacion-item').nextElementSibling;
+      if (!panel || !panel.classList.contains('actuacion-cartel')) return;
+      const img = panel.querySelector('img');
+      const abrir = btn.getAttribute('aria-expanded') !== 'true';
+      if (abrir && !img.src) {
+        img.addEventListener('load', () => { if (panel.classList.contains('abierto')) panel.style.maxHeight = panel.scrollHeight + 'px'; });
+        img.src = img.dataset.src;
+      }
+      btn.setAttribute('aria-expanded', abrir);
+      btn.textContent = abrir ? 'Ocultar cartel' : 'Ver cartel';
+      if (!abrir) { panel.style.maxHeight = panel.scrollHeight + 'px'; panel.offsetHeight; }
+      panel.classList.toggle('abierto', abrir);
+      panel.style.maxHeight = abrir ? panel.scrollHeight + 'px' : '0';
+    });
+    document.getElementById('carteles').addEventListener('transitionend', e => {
+      if (e.target.classList.contains('actuacion-cartel') && e.target.classList.contains('abierto') && e.target.querySelector('img').complete) e.target.style.maxHeight = 'none';
+    });
 
     if (!BOLOS_CSV_URL) { lista.innerHTML = sinFechas(); return; }
 
@@ -1320,7 +1390,7 @@
         const bolos = rows.map(r => ({
           fecha: parseFecha(get(r, 'fecha')),
           hora: get(r, 'hora'), lugar: get(r, 'lugar'), localidad: get(r, 'localidad'),
-          notas: get(r, 'notas'), enlace: get(r, 'enlace'), telefono: get(r, 'telefono'),
+          notas: get(r, 'notas'), enlace: get(r, 'enlace'), telefono: get(r, 'telefono'), cartel: get(r, 'cartel'),
           publicar: norm(get(r, 'publicar'))
         })).filter(b => b.fecha && b.lugar && !['no', 'n', 'false', '0'].includes(b.publicar));
 
