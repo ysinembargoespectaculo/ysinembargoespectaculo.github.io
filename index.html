@@ -552,6 +552,46 @@
       .actuacion-hora { text-align: left; }
     }
 
+    .actuacion-notas {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      margin-top: 0.25rem;
+    }
+    .actuacion-notas a { color: var(--accent); }
+    .actuacion-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      font-family: var(--font-botones);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      color: #111;
+      background: #ffb849;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+    .actuacion-link:hover { filter: brightness(1.1); }
+    .bolos-mensaje {
+      padding: 1.2rem 0;
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      border-top: 1px solid rgba(218,0,0,0.3);
+      border-bottom: 1px solid rgba(218,0,0,0.3);
+    }
+    .bolos-mensaje a { color: #ffb849; }
+    .bolos-pasados { margin-top: 2rem; max-width: 700px; }
+    .bolos-pasados summary {
+      cursor: pointer;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .bolos-pasados .actuacion-item { opacity: 0.6; padding: 0.7rem 0; }
+
     /* ── CARTELES ── */
     #carteles {
       background: var(--dark2);
@@ -955,39 +995,14 @@
         <p class="section-label reveal">Fechas</p>
         <h2 class="section-title reveal reveal-delay-1">Actuaciones</h2>
         <div class="section-divider reveal reveal-delay-2"></div>
-        <!-- LISTA DE ACTUACIONES -->
-        <div class="actuaciones-lista reveal reveal-delay-2">
-          <div class="actuacion-item">
-            <span class="actuacion-fecha">17 Jul 2026</span>
-            <span class="actuacion-lugar">La Chanca · Conil de la Frontera</span>
-            <span class="actuacion-hora">22:00 h</span>
-          </div>
-          <div class="actuacion-item">
-            <span class="actuacion-fecha">23 Jul 2026</span>
-            <span class="actuacion-lugar">Anfiteatro Hotel Royal Hideaway Sancti Petri · Chiclana de la Frontera</span>
-            <span class="actuacion-hora">22:00 h</span>
-          </div>
-          <div class="actuacion-item">
-            <span class="actuacion-fecha">24 Jul 2026</span>
-            <span class="actuacion-lugar">Azotea Hotel Aroma de Mar <em style="font-size:0.8em;color:var(--text-muted)">(formato acústico)</em> · Chiclana de la Frontera · Sólo con reserva de cena: <a href="tel:+34956497049" style="color:var(--accent);">+34 956 49 70 49</a></span>
-            <span class="actuacion-hora">21:00 h</span>
-          </div>
-          <div class="actuacion-item">
-            <span class="actuacion-fecha">8 Ago 2026</span>
-            <span class="actuacion-lugar">Anfiteatro Zahora · Pago de Zahora, Barbate</span>
-            <span class="actuacion-hora">21:00 h</span>
-          </div>
-          <div class="actuacion-item">
-            <span class="actuacion-fecha">13 Ago 2026</span>
-            <span class="actuacion-lugar">Anfiteatro Hotel Royal Hideaway Sancti Petri · Chiclana de la Frontera</span>
-            <span class="actuacion-hora">22:00 h</span>
-          </div>
-          <div class="actuacion-item">
-            <span class="actuacion-fecha">20 Ago 2026</span>
-            <span class="actuacion-lugar">Anfiteatro Hotel Royal Hideaway Sancti Petri · Chiclana de la Frontera</span>
-            <span class="actuacion-hora">22:00 h</span>
-          </div>
+        <!-- LISTA DE ACTUACIONES: se carga desde Google Sheets (ver BOLOS_CSV_URL en el script) -->
+        <div class="actuaciones-lista reveal reveal-delay-2" id="listaBolos">
+          <p class="bolos-mensaje">Cargando fechas…</p>
         </div>
+        <details class="bolos-pasados" id="bolosPasados" hidden>
+          <summary>Actuaciones anteriores</summary>
+          <div class="actuaciones-lista" id="listaBolosPasados"></div>
+        </details>
       </div>
     </div>
   </section>
@@ -1146,6 +1161,105 @@
       });
     }, { threshold: 0.05 });
     revealEls.forEach(el => observer.observe(el));
+  </script>
+  <script>
+  /* ── BOLOS DESDE GOOGLE SHEETS ──
+     Hoja con cabecera: Fecha | Hora | Lugar | Localidad | Notas | Enlace | Teléfono | Publicar
+     En Google Sheets: Archivo > Compartir > Publicar en la web > (pestaña de bolos) > CSV > Publicar
+     y pega aquí el enlace que te da. */
+  const BOLOS_CSV_URL = '';
+
+  (function () {
+    const lista = document.getElementById('listaBolos');
+    const pasadosBox = document.getElementById('bolosPasados');
+    const listaPasados = document.getElementById('listaBolosPasados');
+    const MESES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    const MAX_PASADOS = 10;
+
+    const sinFechas = () => '<p class="bolos-mensaje">Próximas fechas muy pronto. ¿Quieres el espectáculo en tu ciudad o tu evento? <a href="#contacto">Contacta con nosotros</a>.</p>';
+
+    function parseCSV(text) {
+      const rows = []; let row = [], val = '', q = false;
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (q) {
+          if (c === '"') { if (text[i + 1] === '"') { val += '"'; i++; } else q = false; }
+          else val += c;
+        } else if (c === '"') q = true;
+        else if (c === ',') { row.push(val); val = ''; }
+        else if (c === '\n' || c === '\r') {
+          if (c === '\r' && text[i + 1] === '\n') i++;
+          row.push(val); rows.push(row); row = []; val = '';
+        } else val += c;
+      }
+      if (val !== '' || row.length) { row.push(val); rows.push(row); }
+      return rows;
+    }
+
+    function norm(t) { return (t || '').toString().trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+
+    function parseFecha(t) {
+      t = (t || '').trim(); let m;
+      if ((m = t.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{2,4})$/))) {
+        let y = +m[3]; if (y < 100) y += 2000;
+        return new Date(y, +m[2] - 1, +m[1]);
+      }
+      if ((m = t.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/))) return new Date(+m[1], +m[2] - 1, +m[3]);
+      return null;
+    }
+
+    function esc(t) {
+      return (t || '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    }
+
+    function urlSegura(u) { u = (u || '').trim(); return /^https?:\/\//i.test(u) ? u : ''; }
+
+    function item(b, pasado) {
+      const fecha = b.fecha.getDate() + ' ' + MESES[b.fecha.getMonth()] + ' ' + b.fecha.getFullYear();
+      let hora = b.hora.trim();
+      if (hora && /^\d{1,2}[:.]\d{2}(:\d{2})?$/.test(hora)) hora = hora.slice(0, 5).replace('.', ':') + ' h';
+      let lugar = esc(b.lugar) + (b.localidad ? ' · ' + esc(b.localidad) : '');
+      if (!pasado) {
+        const extra = [];
+        if (b.notas) extra.push(esc(b.notas));
+        if (b.telefono) extra.push('<a href="tel:' + b.telefono.replace(/[^\d+]/g, '') + '">' + esc(b.telefono) + '</a>');
+        if (extra.length) lugar += '<span class="actuacion-notas">' + extra.join(' · ') + '</span>';
+        const url = urlSegura(b.enlace);
+        if (url) lugar += '<a class="actuacion-link" href="' + esc(url) + '" target="_blank" rel="noopener">Entradas / info</a>';
+      }
+      return '<div class="actuacion-item"><span class="actuacion-fecha">' + fecha + '</span><span class="actuacion-lugar">' + lugar + '</span><span class="actuacion-hora">' + esc(hora) + '</span></div>';
+    }
+
+    if (!BOLOS_CSV_URL) { lista.innerHTML = sinFechas(); return; }
+
+    fetch(BOLOS_CSV_URL + (BOLOS_CSV_URL.includes('?') ? '&' : '?') + 't=' + Date.now())
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(text => {
+        const rows = parseCSV(text).filter(r => r.some(c => c.trim() !== ''));
+        if (!rows.length) throw new Error('vacío');
+        const cab = rows.shift().map(norm);
+        const col = n => cab.indexOf(n);
+        const get = (r, n) => { const i = col(n); return i >= 0 ? (r[i] || '').trim() : ''; };
+        const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+
+        const bolos = rows.map(r => ({
+          fecha: parseFecha(get(r, 'fecha')),
+          hora: get(r, 'hora'), lugar: get(r, 'lugar'), localidad: get(r, 'localidad'),
+          notas: get(r, 'notas'), enlace: get(r, 'enlace'), telefono: get(r, 'telefono'),
+          publicar: norm(get(r, 'publicar'))
+        })).filter(b => b.fecha && b.lugar && !['no', 'n', 'false', '0'].includes(b.publicar));
+
+        const proximos = bolos.filter(b => b.fecha >= hoy).sort((a, b) => a.fecha - b.fecha);
+        const pasados = bolos.filter(b => b.fecha < hoy).sort((a, b) => b.fecha - a.fecha).slice(0, MAX_PASADOS);
+
+        lista.innerHTML = proximos.length ? proximos.map(b => item(b, false)).join('') : sinFechas();
+        if (pasados.length) {
+          listaPasados.innerHTML = pasados.map(b => item(b, true)).join('');
+          pasadosBox.hidden = false;
+        }
+      })
+      .catch(err => { console.warn('Bolos: no se pudo leer la hoja', err); lista.innerHTML = sinFechas(); });
+  })();
   </script>
 </body>
 </html>
