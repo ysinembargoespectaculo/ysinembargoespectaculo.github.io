@@ -574,7 +574,7 @@
     }
     .actuacion-item {
       display: grid;
-      grid-template-columns: 170px 1fr 80px;
+      grid-template-columns: 170px 1fr auto 80px;
       align-items: center;
       gap: 1.5rem;
       padding: 1.2rem 0;
@@ -610,6 +610,7 @@
         padding: 1rem 0;
       }
       .actuacion-hora { text-align: left; }
+      .actuacion-botones { justify-content: flex-start; margin-top: 0.3rem; order: 4; }
     }
 
     .actuacion-notas {
@@ -633,7 +634,8 @@
       text-decoration: none;
     }
     .actuacion-link:hover { filter: brightness(1.1); }
-    .actuacion-botones { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+    .actuacion-botones { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: flex-end; }
+    .actuacion-botones:empty { display: none; }
     .actuacion-botones .actuacion-link { margin-top: 0; }
     .actuacion-cartel-btn {
       display: inline-block;
@@ -647,6 +649,7 @@
       border-radius: 4px;
       cursor: pointer;
     }
+    .actuacion-cartel-btn[hidden] { display: none; }
     .actuacion-cartel-btn:hover, .actuacion-cartel-btn[aria-expanded="true"] { background: #ffb849; color: #111; }
     .actuacion-cartel {
       overflow: hidden;
@@ -1337,9 +1340,8 @@
       const url = pasado ? '' : urlSegura(b.enlace);
       if (url) botones.push('<a class="actuacion-link" href="' + esc(url) + '" target="_blank" rel="noopener">Entradas / info</a>');
       const cartel = rutaCartel(b.cartel);
-      if (cartel) botones.push('<button type="button" class="actuacion-cartel-btn" aria-expanded="false">Ver cartel</button>');
-      if (botones.length) lugar += '<span class="actuacion-botones">' + botones.join('') + '</span>';
-      let html = '<div class="actuacion-item"><span class="actuacion-fecha">' + fecha + '</span><span class="actuacion-lugar">' + lugar + '</span><span class="actuacion-hora">' + esc(hora) + '</span></div>';
+      if (cartel) botones.push('<button type="button" class="actuacion-cartel-btn" aria-expanded="false" data-cartel="' + cartel + '" hidden>Ver cartel</button>');
+      let html = '<div class="actuacion-item"><span class="actuacion-fecha">' + fecha + '</span><span class="actuacion-lugar">' + lugar + '</span><span class="actuacion-botones">' + botones.join('') + '</span><span class="actuacion-hora">' + esc(hora) + '</span></div>';
       if (cartel) html += '<div class="actuacion-cartel"><a href="' + cartel + '" target="_blank" rel="noopener"><img data-src="' + cartel + '" alt="Cartel ' + esc(b.lugar) + ' ' + fecha + '"></a></div>';
       return html;
     }
@@ -1402,6 +1404,12 @@
           listaPasados.innerHTML = pasados.map(b => item(b, true)).join('');
           pasadosBox.hidden = false;
         }
+        document.querySelectorAll('.actuacion-cartel-btn[data-cartel]').forEach(btn => {
+          if (/^https?:/i.test(btn.dataset.cartel)) { btn.hidden = false; return; }
+          fetch(btn.dataset.cartel, { method: 'HEAD' })
+            .then(r => { if (r.ok) btn.hidden = false; })
+            .catch(() => {});
+        });
       })
       .catch(err => { console.warn('Bolos: no se pudo leer la hoja', err); lista.innerHTML = sinFechas(); });
   })();
