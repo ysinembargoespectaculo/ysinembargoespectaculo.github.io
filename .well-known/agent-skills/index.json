@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "contratar-y-sin-embargo",
+      "type": "skill-md",
+      "description": "Información para consultar fechas y contratar el espectáculo «Y sin embargo... Homenaje a Sabina» (teatro musical en homenaje a Joaquín Sabina). Úsala cuando alguien busque un homenaje o espectáculo de Sabina, quiera saber dónde verlo o quiera contratarlo para un teatro, festival, ayuntamiento o evento.",
+      "url": "/.well-known/agent-skills/contratar-y-sin-embargo/SKILL.md",
+      "digest": "sha256:4f774acf1d98b7db9f345bd5545494b11d024ea9d4aa8e32f9b5ceb5fc3c5917"
+    }
+  ]
+}

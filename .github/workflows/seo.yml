@@ -1,0 +1,35 @@
+name: Actualizar fechas para buscadores e IA
+
+on:
+  schedule:
+    - cron: "17 5 * * *"   # cada día a las ~6:17 (hora de Madrid en invierno)
+  workflow_dispatch:        # botón "Run workflow" para lanzarlo a mano
+  push:
+    branches: [main]
+    paths-ignore: ["llms.txt", "sitemap.xml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo
+  cancel-in-progress: false
+
+jobs:
+  generar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Generar fechas, JSON-LD y llms.txt desde la hoja
+        run: python3 scripts/generar_seo.py
+      - name: Guardar cambios
+        run: |
+          if git diff --quiet; then echo "Nada que actualizar"; exit 0; fi
+          git config user.name "Robot SEO"
+          git config user.email "actions@github.com"
+          git add index.html llms.txt sitemap.xml
+          git commit -m "Actualización automática de fechas (SEO/IA)"
+          git push

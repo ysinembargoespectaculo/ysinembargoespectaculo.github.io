@@ -1,0 +1,67 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Y sin embargo... Homenaje a Sabina",
+    "identifier": "did:web:ysinembargoespectaculo.com",
+    "documentationUrl": "https://ysinembargoespectaculo.com/"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:ysinembargoespectaculo.com:docs:llms",
+      "displayName": "Resumen del espectáculo y próximas fechas",
+      "type": "text/markdown",
+      "url": "https://ysinembargoespectaculo.com/llms.txt",
+      "description": "Resumen del espectáculo de teatro musical «Y sin embargo... Homenaje a Sabina», próximas actuaciones (actualizadas a diario) y datos de contratación.",
+      "tags": [
+        "teatro-musical",
+        "joaquin-sabina",
+        "espectaculo",
+        "conciertos"
+      ],
+      "representativeQueries": [
+        "homenaje a Joaquín Sabina en directo",
+        "dónde ver un espectáculo de Sabina",
+        "próximas fechas de Y sin embargo",
+        "espectáculo tributo a Sabina en Andalucía"
+      ],
+      "metadata": {
+        "schemaOrgType": "TheaterGroup",
+        "telephone": "+34 699 698 457",
+        "email": "ysinembargoespectaculo@gmail.com",
+        "areaServed": "España"
+      }
+    },
+    {
+      "identifier": "urn:air:ysinembargoespectaculo.com:skill:contratar",
+      "displayName": "Contratar Y sin embargo",
+      "type": "text/markdown",
+      "url": "https://ysinembargoespectaculo.com/.well-known/agent-skills/contratar-y-sin-embargo/SKILL.md",
+      "description": "Instrucciones para agentes: cómo consultar fechas y pedir presupuesto del espectáculo para teatros, festivales, ayuntamientos o eventos privados.",
+      "tags": [
+        "contratacion",
+        "booking",
+        "teatro-musical"
+      ],
+      "representativeQueries": [
+        "contratar un homenaje a Sabina para un teatro",
+        "espectáculo de Sabina para fiestas de un ayuntamiento",
+        "presupuesto espectáculo musical Sabina"
+      ]
+    },
+    {
+      "identifier": "urn:air:ysinembargoespectaculo.com:docs:dossier",
+      "displayName": "Dossier del espectáculo",
+      "type": "application/pdf",
+      "url": "https://ysinembargoespectaculo.com/assets/docs/dossier_ysinembargo.pdf",
+      "description": "Dossier con la presentación del espectáculo, formación y necesidades técnicas.",
+      "tags": [
+        "dossier",
+        "rider"
+      ],
+      "representativeQueries": [
+        "dossier de Y sin embargo Homenaje a Sabina",
+        "necesidades técnicas del espectáculo de Sabina"
+      ]
+    }
+  ]
+}
