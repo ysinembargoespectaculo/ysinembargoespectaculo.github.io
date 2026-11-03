@@ -20,6 +20,8 @@ MESES_LARGOS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", 
                 "septiembre", "octubre", "noviembre", "diciembre"]
 MAX_PASADOS = 10
 HOY = date.today()
+REPERTORIO = ['19 días y 500 noches', 'Contigo', 'Donde habita el olvido', 'La canción de las noches perdidas', 'La del pirata cojo', 'La sombra del león', 'Noches de boda', 'Nos sobran los motivos', 'Peces de ciudad', 'Pongamos que hablo de Madrid', 'Por el boulevard de los sueños rotos', 'Princesa', 'Quién me ha robado el mes de abril', 'Ruido', 'Y nos dieron las diez', 'Y sin embargo', 'Y sin embargo te quiero']
+AVISO_REPERTORIO = 'Es un repertorio vivo: puede variar algo de una función a otra.'
 
 
 def norm(t):
@@ -95,6 +97,7 @@ def evento_jsonld(b):
                      "address": {"@type": "PostalAddress", "addressLocality": b["localidad"] or b["lugar"],
                                  "addressCountry": "ES"}},
         "performer": {"@id": WEB + "/#grupo"},
+        "workPerformed": [{"@type": "CreativeWork", "name": t} for t in REPERTORIO],
         "organizer": {"@id": WEB + "/#grupo"},
         "image": WEB + "/assets/img/banner-rrss.jpg",
         "description": "Espectáculo de teatro musical que rinde homenaje a las canciones de Joaquín Sabina."
@@ -155,6 +158,9 @@ def jsonld(proximos):
                  "acceptedAnswer": {"@type": "Answer", "text":
                     "Escribiendo a ysinembargoespectaculo@gmail.com o por WhatsApp al +34 699 698 457. "
                     "El dossier está en " + WEB + "/assets/docs/dossier_ysinembargo.pdf"}},
+                {"@type": "Question", "name": "¿Qué canciones forman el repertorio?",
+                 "acceptedAnswer": {"@type": "Answer", "text":
+                    ", ".join(REPERTORIO) + ". " + AVISO_REPERTORIO}},
                 {"@type": "Question", "name": "¿Dónde y cuándo se puede ver?",
                  "acceptedAnswer": {"@type": "Answer", "text":
                     "Las próximas fechas están publicadas en " + WEB + "/#carteles"}},
