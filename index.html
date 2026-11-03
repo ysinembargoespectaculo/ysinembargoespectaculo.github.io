@@ -116,6 +116,31 @@
           }
         }
       ]
+    },
+    {
+      "@type": "TheaterEvent",
+      "name": "Y sin embargo... Homenaje a Sabina — Pay-Pay (Cádiz)",
+      "startDate": "2026-11-20T21:00:00+01:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Pay-Pay",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cádiz",
+          "addressCountry": "ES"
+        }
+      },
+      "performer": {
+        "@id": "https://ysinembargoespectaculo.com/#grupo"
+      },
+      "organizer": {
+        "@id": "https://ysinembargoespectaculo.com/#grupo"
+      },
+      "image": "https://ysinembargoespectaculo.com/assets/img/banner-rrss.jpg",
+      "description": "Espectáculo de teatro musical que rinde homenaje a las canciones de Joaquín Sabina.",
+      "url": "https://ysinembargoespectaculo.com/#carteles"
     }
   ]
 }
@@ -1212,13 +1237,14 @@
         <!-- LISTA DE ACTUACIONES: se carga desde Google Sheets (ver BOLOS_CSV_URL en el script) -->
         <div class="actuaciones-lista reveal reveal-delay-2" id="listaBolos">
 <!-- BOLOS:INICIO -->
-<p class="bolos-mensaje">Cargando fechas…</p>
+<div class="actuacion-item"><span class="actuacion-fecha"><time datetime="2026-11-20">20 Nov 2026</time></span><span class="actuacion-lugar">Pay-Pay · Cádiz</span><span class="actuacion-botones"></span><span class="actuacion-hora">21:00 h</span></div>
 <!-- BOLOS:FIN -->
         </div>
         <details class="bolos-pasados" id="bolosPasados" hidden>
           <summary>Actuaciones anteriores</summary>
           <div class="actuaciones-lista" id="listaBolosPasados">
 <!-- BOLOS-PASADOS:INICIO -->
+<div class="actuacion-item"><span class="actuacion-fecha"><time datetime="2026-08-20">20 Ago 2026</time></span><span class="actuacion-lugar">Anfiteatro Hotel Royal Hideaway Sancti Petri · Chiclana de la Frontera</span><span class="actuacion-botones"></span><span class="actuacion-hora">22:00 h</span></div><div class="actuacion-item"><span class="actuacion-fecha"><time datetime="2026-08-13">13 Ago 2026</time></span><span class="actuacion-lugar">Anfiteatro Hotel Royal Hideaway Sancti Petri · Chiclana de la Frontera</span><span class="actuacion-botones"></span><span class="actuacion-hora">22:00 h</span></div><div class="actuacion-item"><span class="actuacion-fecha"><time datetime="2026-08-08">8 Ago 2026</time></span><span class="actuacion-lugar">Anfiteatro Zahora · Pago de Zahora, Barbate</span><span class="actuacion-botones"></span><span class="actuacion-hora">21:00 h</span></div><div class="actuacion-item"><span class="actuacion-fecha"><time datetime="2026-07-24">24 Jul 2026</time></span><span class="actuacion-lugar">Azotea Hotel Aroma de Mar · Chiclana de la Frontera</span><span class="actuacion-botones"></span><span class="actuacion-hora">21:00 h</span></div><div class="actuacion-item"><span class="actuacion-fecha"><time datetime="2026-07-23">23 Jul 2026</time></span><span class="actuacion-lugar">Anfiteatro Hotel Royal Hideaway Sancti Petri · Chiclana de la Frontera</span><span class="actuacion-botones"></span><span class="actuacion-hora">22:00 h</span></div>
 <!-- BOLOS-PASADOS:FIN -->
           </div>
         </details>
