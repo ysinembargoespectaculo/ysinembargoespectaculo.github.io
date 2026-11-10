@@ -1706,9 +1706,10 @@
       <a href="legal.html#aviso-legal">Aviso legal</a> ·
       <a href="legal.html#privacidad">Privacidad</a> ·
       <a href="legal.html#cookies">Cookies</a>
-      <button type="button" data-cookies-config hidden>· Configurar cookies</button>
+      <span data-cookies-config hidden aria-hidden="true">·</span>
+      <button type="button" data-cookies-config hidden>Configurar cookies</button>
     </div>
-    <span class="footer-copy">© 2025 ysinembargoespectaculo.com · Todos los derechos reservados</span>
+    <span class="footer-copy">© <span id="anioCopy">2026</span> Y sin embargo... Espectáculo</span>
   </footer>
 
   <!-- ── JS ── -->
@@ -2088,6 +2089,7 @@
     });
   })();
   </script>
+  <script>document.getElementById('anioCopy').textContent = new Date().getFullYear();</script>
   <script src="assets/js/cookies.js" defer></script>
 </body>
 </html>
