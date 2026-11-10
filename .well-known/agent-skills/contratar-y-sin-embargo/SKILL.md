@@ -14,7 +14,7 @@ Espectáculo de teatro musical que rinde homenaje a Joaquín Sabina: versiones p
 
 ## Contratación
 
-- Email: ysinembargoespectaculo@gmail.com
+- Email: info@ysinembargoespectaculo.com
 - WhatsApp / teléfono: +34 699 698 457
 - Dossier (PDF): https://ysinembargoespectaculo.com/assets/docs/dossier_ysinembargo.pdf
 

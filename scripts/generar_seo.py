@@ -125,7 +125,7 @@ def jsonld(proximos):
                             "su poesía y sus canciones, donde música y teatro se entrelazan sin imitaciones. "
                             "Nueve artistas en escena con músicos en directo y narrador."),
             "genre": ["Teatro musical", "Homenaje", "Canción de autor"],
-            "email": "ysinembargoespectaculo@gmail.com",
+            "email": "info@ysinembargoespectaculo.com",
             "telephone": "+34 699 698 457",
             "areaServed": "ES",
             "knowsAbout": "Joaquín Sabina",
@@ -136,7 +136,7 @@ def jsonld(proximos):
                 "https://www.tiktok.com/@ysinembargoespectaculo",
             ],
             "contactPoint": {"@type": "ContactPoint", "contactType": "Contratación y reservas",
-                             "email": "ysinembargoespectaculo@gmail.com", "telephone": "+34 699 698 457",
+                             "email": "info@ysinembargoespectaculo.com", "telephone": "+34 699 698 457",
                              "availableLanguage": "es"},
         },
         {
@@ -156,7 +156,7 @@ def jsonld(proximos):
                     "unidas por textos y poemas, con músicos en directo y narrador."}},
                 {"@type": "Question", "name": "¿Cómo se contrata el espectáculo para un teatro, festival o ayuntamiento?",
                  "acceptedAnswer": {"@type": "Answer", "text":
-                    "Escribiendo a ysinembargoespectaculo@gmail.com o por WhatsApp al +34 699 698 457. "
+                    "Escribiendo a info@ysinembargoespectaculo.com o por WhatsApp al +34 699 698 457. "
                     "El dossier está en " + WEB + "/assets/docs/dossier_ysinembargo.pdf"}},
                 {"@type": "Question", "name": "¿Qué canciones forman el repertorio?",
                  "acceptedAnswer": {"@type": "Answer", "text":
@@ -204,7 +204,7 @@ def main():
     llms_orig = llms
     fechas = "\n".join(f"- {fecha_larga(b)} — {b['lugar']}" + (f" ({b['localidad']})" if b["localidad"] else "")
                        + (f". {b['notas']}" if b["notas"] else "") for b in proximos) \
-        or "- Próximas fechas por anunciar. Contratación: ysinembargoespectaculo@gmail.com"
+        or "- Próximas fechas por anunciar. Contratación: info@ysinembargoespectaculo.com"
     llms = re.sub(r"(<!-- FECHAS:INICIO -->).*?(<!-- FECHAS:FIN -->)",
                   lambda m: m[1] + "\n" + fechas + "\n" + m[2], llms, flags=re.S)
     open("llms.txt", "w", encoding="utf-8").write(llms)
