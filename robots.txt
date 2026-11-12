@@ -1,4 +1,4 @@
-# Y sin embargo... Homenaje a Sabina
+# Y sin embargo... Espectáculo
 # Bienvenidos todos los buscadores y asistentes de IA
 User-agent: *
 Content-Signal: search=yes, ai-input=yes, ai-train=yes

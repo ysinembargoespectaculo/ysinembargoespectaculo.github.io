@@ -1,7 +1,7 @@
 {
   "specVersion": "1.0",
   "host": {
-    "displayName": "Y sin embargo... Homenaje a Sabina",
+    "displayName": "Y sin embargo... Espectáculo",
     "identifier": "did:web:ysinembargoespectaculo.com",
     "documentationUrl": "https://ysinembargoespectaculo.com/"
   },
@@ -11,7 +11,7 @@
       "displayName": "Resumen del espectáculo y próximas fechas",
       "type": "text/markdown",
       "url": "https://ysinembargoespectaculo.com/llms.txt",
-      "description": "Resumen del espectáculo de teatro musical «Y sin embargo... Homenaje a Sabina», próximas actuaciones (actualizadas a diario) y datos de contratación.",
+      "description": "Resumen del espectáculo de teatro musical «Y sin embargo... Espectáculo», próximas actuaciones (actualizadas a diario) y datos de contratación.",
       "tags": [
         "teatro-musical",
         "joaquin-sabina",
@@ -59,7 +59,7 @@
         "rider"
       ],
       "representativeQueries": [
-        "dossier de Y sin embargo Homenaje a Sabina",
+        "dossier de Y sin embargo Espectáculo",
         "necesidades técnicas del espectáculo de Sabina"
       ]
     }

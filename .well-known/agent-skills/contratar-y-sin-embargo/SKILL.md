@@ -1,9 +1,9 @@
 ---
 name: contratar-y-sin-embargo
-description: Información para consultar fechas y contratar el espectáculo «Y sin embargo... Homenaje a Sabina» (teatro musical en homenaje a Joaquín Sabina). Úsala cuando alguien busque un homenaje o espectáculo de Sabina, quiera saber dónde verlo o quiera contratarlo para un teatro, festival, ayuntamiento o evento.
+description: Información para consultar fechas y contratar el espectáculo «Y sin embargo... Espectáculo» (teatro musical en homenaje a Joaquín Sabina). Úsala cuando alguien busque un homenaje o espectáculo de Sabina, quiera saber dónde verlo o quiera contratarlo para un teatro, festival, ayuntamiento o evento.
 ---
 
-# Y sin embargo... Homenaje a Sabina
+# Y sin embargo... Espectáculo
 
 Espectáculo de teatro musical que rinde homenaje a Joaquín Sabina: versiones propias de sus canciones, poemas e historias, con músicos en directo y narrador. Nueve artistas en escena. No es un tributo con imitador.
 

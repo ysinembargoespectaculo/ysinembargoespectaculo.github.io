@@ -88,7 +88,7 @@ def evento_jsonld(b):
     hora = parse_hora(b["hora"])
     ev = {
         "@type": "TheaterEvent",
-        "name": f"Y sin embargo... Homenaje a Sabina — {b['lugar']}" + (f" ({b['localidad']})" if b["localidad"] else ""),
+        "name": f"Y sin embargo... Espectáculo — {b['lugar']}" + (f" ({b['localidad']})" if b["localidad"] else ""),
         "startDate": (datetime.combine(d, datetime.strptime(hora, "%H:%M").time(), MADRID).isoformat()
                       if hora else d.isoformat()),
         "eventStatus": "https://schema.org/EventScheduled",
@@ -116,8 +116,8 @@ def jsonld(proximos):
         {
             "@type": ["PerformingGroup", "TheaterGroup"],
             "@id": WEB + "/#grupo",
-            "name": "Y sin embargo... Homenaje a Sabina",
-            "alternateName": ["Y sin embargo", "Y sin embargo Sabina", "Homenaje a Sabina Y sin embargo"],
+            "name": "Y sin embargo... Espectáculo",
+            "alternateName": ["Y sin embargo", "Y sin embargo Espectáculo", "Homenaje a Sabina Y sin embargo"],
             "url": WEB,
             "logo": WEB + "/assets/img/logo-web.png",
             "image": WEB + "/assets/img/banner-rrss.jpg",
@@ -141,12 +141,12 @@ def jsonld(proximos):
         },
         {
             "@type": "WebSite", "@id": WEB + "/#web", "url": WEB, "inLanguage": "es-ES",
-            "name": "Y sin embargo... Homenaje a Sabina", "publisher": {"@id": WEB + "/#grupo"},
+            "name": "Y sin embargo... Espectáculo", "publisher": {"@id": WEB + "/#grupo"},
         },
         {
             "@type": "FAQPage", "@id": WEB + "/#faq",
             "mainEntity": [
-                {"@type": "Question", "name": "¿Qué es «Y sin embargo... Homenaje a Sabina»?",
+                {"@type": "Question", "name": "¿Qué es «Y sin embargo... Espectáculo»?",
                  "acceptedAnswer": {"@type": "Answer", "text":
                     "Un espectáculo de teatro musical en homenaje a Joaquín Sabina: versiones de sus canciones, poemas e "
                     "historias contadas y cantadas en directo, sin imitaciones ni parecidos."}},
